@@ -43,7 +43,7 @@ const Header: React.FC = () => {
       <div className="header-inner">
         <button className="logo" onClick={() => { setCategory('all'); navigate('/'); }}>
           <span className="logo-icon">🖨️</span>
-          <span className="logo-text">СтасКурс</span>
+          <span className="logo-text">У Стаса</span>
           <span className="logo-sub">Оргтехніка</span>
         </button>
 

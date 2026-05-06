@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { products } from '../core/products';
 import { useCartStore } from '../core/cartStore';
 import './ProductPage.css';
+import { getProductTags } from '../core/utils';
 
 const ProductPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -31,6 +32,7 @@ const ProductPage: React.FC = () => {
     setTimeout(() => setAdded(false), 1400);
   };
 
+
   return (
     <div className="product-page">
       <div className="product-page-inner">
@@ -52,7 +54,7 @@ const ProductPage: React.FC = () => {
               alt={product.name}
               className="product-img"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = 'https://via.placeholder.com/600x450?text=Фото';
+                (e.target as HTMLImageElement).src = 'https://placehold.co/600x450?text=Фото';
               }}
             />
             {!product.inStock && (
@@ -67,7 +69,7 @@ const ProductPage: React.FC = () => {
 
             {/* Tags */}
             <div className="product-tags">
-              {product.tags.map((tag, i) => (
+              {getProductTags(product).map((tag, i) => (
                 <span key={i} className="product-tag">
                   <span className="tag-label">{tag.label}:</span>
                   <span className="tag-value">{tag.value}</span>

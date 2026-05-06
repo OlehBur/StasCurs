@@ -15,16 +15,24 @@ const defaultFilters: FilterState = {
   inkjet: false,
   laser: false,
   a3: false,
+  a4: false,
+  a5: false,
+  a6: false,
+  b5: false,
   oem: false,
   refill: false,
+  isBulk: false,
   autoFeed: false,
   crossCut: false,
+  hds: false,
   coldLamination: false,
   hd: false,
   wideFormat: false,
   touchScreen: false,
   portableScanner: false,
-  page: 1,
+  page: 1,  
+  isCutting: false,
+  isFlatbed: false,
 };
 
 interface FilterStore {
@@ -42,8 +50,16 @@ export const useFilterStore = create<FilterStore>()(
   persist(
     (set) => ({
       filters: defaultFilters,
+      // setCategory: (category) =>
+      //   set((s) => ({ filters: { ...s.filters, category, page: 1, brands: [], colorPrint: false, wireless: false, duplex: false, inkjet: false, laser: false, a3: false,a4:false, a5: false, oem: false, refill: false, autoFeed: false, crossCut: false, coldLamination: false, hd: false, wideFormat: false, touchScreen: false, portableScanner: false } })),
       setCategory: (category) =>
-        set((s) => ({ filters: { ...s.filters, category, page: 1, brands: [], colorPrint: false, wireless: false, duplex: false, inkjet: false, laser: false, a3: false, oem: false, refill: false, autoFeed: false, crossCut: false, coldLamination: false, hd: false, wideFormat: false, touchScreen: false, portableScanner: false } })),
+        set((s) => ({
+          filters: {
+            ...defaultFilters, // reset all other filters when category changes
+            category,
+            page: 1
+          }
+        })),
       setSearch: (search) => set((s) => ({ filters: { ...s.filters, search, page: 1 } })),
       toggleBrand: (brand) =>
         set((s) => {

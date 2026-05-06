@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCartStore } from '../core/cartStore';
 import ConfirmModal from '../components/ConfirmModal';
+import { getProductTags } from '../core/utils';
 import './CartPage.css';
 import type { ProductTag } from '../core';
 
@@ -43,7 +44,7 @@ const CartPage: React.FC = () => {
                     className="cart-item-img"
                     onClick={() => navigate(`/product/${product.id}`)}
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = 'https://via.placeholder.com/120x90?text=Фото';
+                      (e.target as HTMLImageElement).src = 'https://placehold.co/600x450?text=Фото';
                     }}
                   />
                   <div className="cart-item-info">
@@ -55,7 +56,7 @@ const CartPage: React.FC = () => {
                       {product.name}
                     </h3>
                     <div className="cart-item-tags">
-                      {product.tags.slice(0, 2).map((tag: ProductTag, i: number) => (
+                      {getProductTags(product).slice(0, 2).map((tag: ProductTag, i: number) => (
                         <span key={i} className="cart-item-tag">{tag.value}</span>
                       ))}
                     </div>

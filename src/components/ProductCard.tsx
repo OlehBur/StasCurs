@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { type Product } from '../core/index.ts';
 import { useCartStore } from '../core/cartStore';
 import './ProductCard.css';
+import { getProductTags } from '../core/utils.ts';
 
 interface Props {
   product: Product;
@@ -29,7 +30,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           className="card-img"
           loading="lazy"
           onError={(e) => {
-            (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300?text=Фото';
+            (e.target as HTMLImageElement).src = 'https://ceholder.com/400x300?text=Фото';
           }}
         />
         {!product.inStock && (
@@ -41,7 +42,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         <p className="card-brand">{product.brand}</p>
         <h3 className="card-name">{product.name}</h3>
         <div className="card-tags">
-          {product.tags.slice(0, 2).map((tag, i) => (
+          {getProductTags(product).slice(0, 2).map((tag, i) => (
             <span key={i} className="card-tag">{tag.value}</span>
           ))}
         </div>

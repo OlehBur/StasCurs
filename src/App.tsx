@@ -33,7 +33,7 @@ const PageTransition: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
 const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/StasCurs/">
       <Header />
       <PageTransition>
         <Routes>

@@ -42,13 +42,19 @@ export function useFilteredProducts() {
 
     const boolFilters: Array<keyof Product> = [
       'colorPrint', 'wireless', 'duplex', 'inkjet', 'laser',
-      'a3', 'oem', 'refill', 'autoFeed', 'crossCut',
-      'coldLamination', 'hd', 'wideFormat', 'touchScreen', 'portableScanner',
+      'a3', 'a4', 'a5', 'a6', 'oem', 'refill', 'isBulk', 'autoFeed', 'crossCut',
+      'hds', 'coldLamination', 'hd', 'wideFormat', 'touchScreen', 'portableScanner',
+      'isFlatbed', 'isCutting'
     ];
 
+    // boolFilters.forEach((key) => {
+    //   if (filters[key as keyof typeof filters]) {
+    //     result = result.filter((p) => p[key] === true);
+    //   }
+    // });
     boolFilters.forEach((key) => {
       if (filters[key as keyof typeof filters]) {
-        result = result.filter((p) => p[key] === true);
+        result = result.filter((p) => p[key as keyof Product] === true);
       }
     });
 

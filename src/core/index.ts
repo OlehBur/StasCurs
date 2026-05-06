@@ -23,8 +23,8 @@ export interface Product {
   price: number;
   image: string;
   description: string;
-  tags: ProductTag[];
-  inStock: boolean;
+  // tags: ProductTag[];
+  inStock?: boolean;
   // Category-specific filters
   colorPrint?: boolean;
   wireless?: boolean;
@@ -32,9 +32,15 @@ export interface Product {
   inkjet?: boolean;
   laser?: boolean;
   a3?: boolean;
+  a4?: boolean;
+  a5?: boolean;
+  a6?: boolean;
+  b5?: boolean;
   oem?: boolean;
   refill?: boolean;
+  isBulk?: boolean;
   sheetCapacity?: number;
+  hds?: boolean;
   maxDpi?: number;
   touchScreen?: boolean;
   portableScanner?: boolean;
@@ -43,6 +49,8 @@ export interface Product {
   coldLamination?: boolean;
   hd?: boolean;
   wideFormat?: boolean;
+  isFlatbed?: boolean;
+  isCutting?: boolean;
 }
 
 export interface CartItem {
@@ -62,16 +70,24 @@ export interface FilterState {
   inkjet: boolean;
   laser: boolean;
   a3: boolean;
+  a4: boolean;
+  a5: boolean;
+  a6: boolean;
+  b5: boolean;
   oem: boolean;
   refill: boolean;
+  isBulk: boolean;
   autoFeed: boolean;
   crossCut: boolean;
+  hds: boolean;
   coldLamination: boolean;
   hd: boolean;
   wideFormat: boolean;
   touchScreen: boolean;
   portableScanner: boolean;
   page: number;
+  isFlatbed: boolean;
+  isCutting: boolean;
 }
 
 export const CATEGORY_LABELS: Record<ProductCategory | 'all', string> = {
@@ -84,7 +100,7 @@ export const CATEGORY_LABELS: Record<ProductCategory | 'all', string> = {
   paper: 'Папір',
   shredders: 'Шредери',
   laminators: 'Ламінатори',
-  projectors: 'Проектори',
+  projectors: 'Проєктори',
   plotters: 'Плотери',
 };
 
