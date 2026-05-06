@@ -1,13 +1,14 @@
 import React from 'react';
 import { useFilterStore } from '../core/filterStore';
-import { BRANDS, MIN_PRICE, MAX_PRICE, CATEGORY_BRANDS } from '../core/products';
+import { BRANDS, MIN_PRICE, MAX_PRICE, CATEGORY_BRANDS, getPriceRange } from '../core/products';
 import './Sidebar.css';
+import { CATEGORY_PREFIXES } from '../core/utils';
 
 const CATEGORY_FILTERS: Record<string, { key: string; label: string }[]> = {
   printers: [
     { key: 'colorPrint', label: '🎨 Кольоровий друк' },
     { key: 'wireless', label: '📶 Wi-Fi / Бездротовий' },
-    { key: 'duplex', label: '↔️ Дуплекс (двосторонній)' },
+    { key: 'duplex', label: '↔️ Двосторонній друк' },
     { key: 'inkjet', label: '💧 Струменевий' },
     { key: 'laser', label: '🔆 Лазерний' },
     { key: 'a3', label: '📐 Формат A3' },
@@ -17,13 +18,13 @@ const CATEGORY_FILTERS: Record<string, { key: string; label: string }[]> = {
   scanners: [
     { key: 'autoFeed', label: '📂 Автоподавач' },
     { key: 'portableScanner', label: '🎒 Портативний' },
-    { key: 'duplex', label: '↔️ Дуплекс' },
+    { key: 'duplex', label: '↔️ Двостороннє сканування' },
     { key: 'wireless', label: '📶 Wi-Fi' },
   ],
   mfp: [
     { key: 'colorPrint', label: '🎨 Кольоровий друк' },
     { key: 'wireless', label: '📶 Wi-Fi / Бездротовий' },
-    { key: 'duplex', label: '↔️ Дуплекс' },
+    { key: 'duplex', label: '↔️ Двосторонній друк/сканування' },
     { key: 'touchScreen', label: '👆 Сенсорний екран' },
     { key: 'autoFeed', label: '📂 Автоподавач' },
     { key: 'inkjet', label: '💧 Струменевий' },
@@ -81,6 +82,9 @@ const Sidebar: React.FC = () => {
     ? BRANDS
     : CATEGORY_BRANDS[filters.category] || [];
 
+  const categoryPrefix = CATEGORY_PREFIXES[filters.category] || 'all';
+  const dynamicRange = getPriceRange(categoryPrefix);
+
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
@@ -113,8 +117,10 @@ const Sidebar: React.FC = () => {
         <input
           type="range"
           className="price-range"
-          min={MIN_PRICE}
-          max={MAX_PRICE}
+          // min={MIN_PRICE}
+          // max={MAX_PRICE}
+          min={dynamicRange.min}
+          max={dynamicRange.max}
           value={filters.maxPrice}
           onChange={(e) => setPriceRange(filters.minPrice, Number(e.target.value))}
         />

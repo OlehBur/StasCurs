@@ -10,7 +10,7 @@ const ProductPage: React.FC = () => {
   const navigate = useNavigate();
   const addToCart = useCartStore((s) => s.addToCart);
   const cartItems = useCartStore((s) => s.items);
-  const totalItems = useCartStore((s) => s.totalItems());
+  // const totalItems = useCartStore((s) => s.totalItems());
   const [added, setAdded] = useState(false);
 
   const product = products.find((p) => p.id === id);
@@ -40,10 +40,9 @@ const ProductPage: React.FC = () => {
         <div className="product-nav">
           <button className="back-btn" onClick={() => navigate(-1)}>← Назад</button>
           <button className="back-home-btn" onClick={() => navigate('/')}>🏠 На головну</button>
-          <button className="nav-cart-btn" onClick={() => navigate('/cart')}>
-            🛒 Кошик
-            {totalItems > 0 && <span className="nav-cart-badge">{totalItems}</span>}
-          </button>
+          {/* <button className="nav-cart-btn" onClick={() => navigate('/cart')}>            🛒 Кошик
+                        {totalItems > 0 && <span className="nav-cart-badge">{totalItems}</span>}
+          </button> */}
         </div>
 
         <div className="product-layout">

@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
               {filters.search ? `Пошук: "${filters.search}"` : categoryLabel}
             </h1>
             <span className="results-count">{total} товарів</span>
-            <button className="home-back-btn" onClick={() => navigate('/')}>🏠 На головну</button>
+            {/* <button className="home-back-btn" onClick={() => navigate('/')}>🏠 На головну</button> */}
           </div>
 
           {paginated.length === 0 ? (

@@ -8,7 +8,7 @@ export const getProductTags = (product: Product) => {
   if (product.laser) tags.push({ label: 'Тип', value: 'Лазерний' });
   if (product.inkjet) tags.push({ label: 'Тип', value: 'Струменевий' });
   if (product.wireless) tags.push({ label: 'Зв\'язок', value: 'Wi-Fi' });
-  if (product.duplex) tags.push({ label: 'Друк', value: 'Дуплекс' });
+  if (product.duplex) tags.push({ label: 'Друк', value: 'Двосторонній' });
   if (product.autoFeed) tags.push({ label: 'Подача', value: 'Автоподавач' });
   if (product.touchScreen) tags.push({ label: 'Керування', value: 'Сенсорний екран' });
   if (product.portableScanner) tags.push({ label: 'Тип', value: 'Портативний' });
@@ -29,4 +29,17 @@ export const getProductTags = (product: Product) => {
   if (product.isFlatbed) tags.push({ label: 'Тип', value: 'Планшетний' });
   if (product.isCutting) tags.push({ label: 'Тип', value: 'Ріжучий' });
   return tags;
+};
+
+export const CATEGORY_PREFIXES: Record<string, string> = {
+  all: 'all',
+  printers: 'p0',
+  plotters: 'pl',
+  paper: 'pa',
+  shredders: 'sh',
+  ink: 'i',
+  toner: 't0',
+  laminators: 'l0',
+  projectors: 'pr',
+  scanners: 'sc', 
 };

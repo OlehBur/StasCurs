@@ -1,7 +1,8 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { type FilterState, type ProductCategory } from '../core';
-import { MIN_PRICE, MAX_PRICE } from './products';
+import { MIN_PRICE, MAX_PRICE, getPriceRange } from './products';
+import { CATEGORY_PREFIXES } from './utils';
 
 const defaultFilters: FilterState = {
   category: 'all',
@@ -30,7 +31,7 @@ const defaultFilters: FilterState = {
   wideFormat: false,
   touchScreen: false,
   portableScanner: false,
-  page: 1,  
+  page: 1,
   isCutting: false,
   isFlatbed: false,
 };
@@ -50,16 +51,21 @@ export const useFilterStore = create<FilterStore>()(
   persist(
     (set) => ({
       filters: defaultFilters,
-      // setCategory: (category) =>
-      //   set((s) => ({ filters: { ...s.filters, category, page: 1, brands: [], colorPrint: false, wireless: false, duplex: false, inkjet: false, laser: false, a3: false,a4:false, a5: false, oem: false, refill: false, autoFeed: false, crossCut: false, coldLamination: false, hd: false, wideFormat: false, touchScreen: false, portableScanner: false } })),
-      setCategory: (category) =>
+
+      setCategory: (category: string) => {
+        const prefix = CATEGORY_PREFIXES[category] || 'all';
+        const { min, max } = getPriceRange(prefix);
+
         set((s) => ({
           filters: {
-            ...defaultFilters, // reset all other filters when category changes
-            category,
+            ...defaultFilters, // скидання інших фільтрів
+            category: category as ProductCategory | 'all',
+            minPrice: min,
+            maxPrice: max,
             page: 1
           }
-        })),
+        }));
+      },
       setSearch: (search) => set((s) => ({ filters: { ...s.filters, search, page: 1 } })),
       toggleBrand: (brand) =>
         set((s) => {
