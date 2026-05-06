@@ -1,0 +1,135 @@
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  align-self: flex-start;
+  position: sticky;
+  top: calc(var(--header-h) + 1rem);
+  max-height: calc(100vh - var(--header-h) - 2rem);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.sidebar-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+
+.reset-btn {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text2);
+  transition: all var(--transition);
+}
+
+.reset-btn:hover { border-color: var(--danger); color: var(--danger); }
+
+.filter-section {
+  border-top: 1.5px solid var(--border);
+  padding: 0.9rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text2);
+  margin-bottom: 0.25rem;
+}
+
+/* Price */
+.price-inputs {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.price-input {
+  width: 80px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.price-input:focus { border-color: var(--accent); }
+
+.price-dash { color: var(--text2); font-size: 0.85rem; }
+
+.price-range {
+  width: 100%;
+  accent-color: var(--accent);
+  margin-top: 0.25rem;
+}
+
+/* Checkbox */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.87rem;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0.2rem 0;
+  transition: color var(--transition);
+  user-select: none;
+}
+
+.checkbox-label:hover { color: var(--accent); }
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  background: var(--bg);
+}
+
+.checkbox-label input:checked + .checkbox-custom {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.checkbox-label input:checked + .checkbox-custom::after {
+  content: '✓';
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 900;
+}

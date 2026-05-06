@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #f4f1ec;
+  --bg2: #ede9e2;
+  --surface: #ffffff;
+  --border: #ddd9d0;
+  --text: #1a1714;
+  --text2: #5a5550;
+  --accent: #d45a1f;
+  --accent2: #f07240;
+  --accent-light: #fff0ea;
+  --blue: #1a3c6e;
+  --blue-light: #e8eef7;
+  --success: #2e7d32;
+  --danger: #c62828;
+  --shadow: 0 2px 12px rgba(30,20,10,0.08);
+  --shadow-lg: 0 8px 40px rgba(30,20,10,0.14);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+  --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  --header-h: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+
+button { cursor: pointer; font-family: var(--font-body); }
+
+img { max-width: 100%; display: block; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* Utility */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.gap-1 { gap: 0.5rem; }
+.gap-2 { gap: 1rem; }
