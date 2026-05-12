@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import ProductCard from '../components/ProductCard';
 import Pagination from '../components/Pagination';
@@ -12,7 +12,7 @@ import './HomePage.css';
 const HomePage: React.FC = () => {
   const { paginated, totalPages, page, total } = useFilteredProducts();
   const { filters, setPage, resetFilters } = useFilterStore();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
   const handlePageChange = (p: number) => {

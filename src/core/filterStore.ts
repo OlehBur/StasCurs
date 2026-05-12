@@ -56,7 +56,7 @@ export const useFilterStore = create<FilterStore>()(
         const prefix = CATEGORY_PREFIXES[category] || 'all';
         const { min, max } = getPriceRange(prefix);
 
-        set((s) => ({
+        set(() => ({
           filters: {
             ...defaultFilters, // скидання інших фільтрів
             category: category as ProductCategory | 'all',
